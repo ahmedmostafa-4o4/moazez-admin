@@ -7086,6 +7086,38 @@
       "actions": {
         "openSchoolDashboard": "Open School Dashboard"
       }
+    },
+    "placeholders": {
+      "apps": {
+        "title": "Apps Center",
+        "subtitle": "Manage platform-level app availability and module rollout.",
+        "panelTitle": "Apps Center foundation",
+        "panelDescription": "This placeholder reserves the global apps workspace for a future implementation."
+      },
+      "usersRoles": {
+        "title": "Users & Roles",
+        "subtitle": "Manage platform users, roles, and cross-school access policies.",
+        "panelTitle": "Users and roles foundation",
+        "panelDescription": "This placeholder reserves the Super Admin identity and authorization workspace."
+      },
+      "reports": {
+        "title": "Reports",
+        "subtitle": "Review global operational, academic, and adoption reporting.",
+        "panelTitle": "Reports foundation",
+        "panelDescription": "This placeholder reserves the platform reporting workspace for mock and future analytics."
+      },
+      "operations": {
+        "title": "Operations",
+        "subtitle": "Monitor platform operations, system health, and support workflows.",
+        "panelTitle": "Operations foundation",
+        "panelDescription": "This placeholder reserves the operations workspace for future runbooks and monitoring."
+      },
+      "securityAudit": {
+        "title": "Security & Audit",
+        "subtitle": "Track security posture, audit events, and compliance activity.",
+        "panelTitle": "Security and audit foundation",
+        "panelDescription": "This placeholder reserves the platform security workspace for future audit views."
+      }
     }
   },
   "nationalities": {
