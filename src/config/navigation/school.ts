@@ -23,9 +23,6 @@ import {
   PlugZap,
   Building2,
   Award,
-  Map,
-  ListChecks,
-  TrendingUp,
 } from "lucide-react";
 import {
   mockLeads,
@@ -34,21 +31,9 @@ import {
   mockInterviews,
   mockDecisions,
 } from "@/data/mockDataLinked";
+import type { NavigationItem } from "./types";
 
-interface MenuItem {
-  key: string;
-  label_en: string;
-  label_ar: string;
-  href_en: string;
-  href_ar: string;
-  icon: React.ComponentType<{ className?: string }>;
-  children?: MenuItem[];
-  badge?: () => number; // Function to get dynamic badge count
-  buttonVariant?: "default" | "highlight";
-  buttonBackgroundImage?: string;
-}
-
-export const menuItems: MenuItem[] = [
+export const schoolMenuItems: NavigationItem[] = [
   {
     key: "hero-journey",
     label_en: "Hero Journey",
@@ -586,7 +571,7 @@ export const menuItems: MenuItem[] = [
   },
 ];
 
-export const bottomItems: MenuItem[] = [
+export const schoolBottomItems: NavigationItem[] = [
   {
     key: "help",
     label_en: "Get Help",

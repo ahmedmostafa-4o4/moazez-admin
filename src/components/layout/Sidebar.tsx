@@ -1,6 +1,5 @@
 "use client";
 
-import { bottomItems, menuItems } from "@/config/navigation";
 import {
   Building2,
   Menu,
@@ -12,14 +11,17 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import GuardedLink from "@/components/navigation/GuardedLink";
 import { usePathname } from "next/navigation";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import type { CSSProperties } from "react";
-import { usePermissions, type PermissionKey } from "@/hooks/usePermissions";
+import type { NavigationItem } from "@/config/navigation";
 
 interface SidebarProps {
   activeItem?: string;
   onSelect?: (item: string) => void;
+  menuItems: NavigationItem[];
+  bottomItems?: NavigationItem[];
   schoolName?: string;
+  scopeLabel?: string;
   isOpen?: boolean;
   onToggle?: () => void;
   isRTL?: boolean;
@@ -27,54 +29,21 @@ interface SidebarProps {
 
 export default function Sidebar({
   onSelect,
+  menuItems,
+  bottomItems = [],
   schoolName = "School Name",
+  scopeLabel,
   isOpen = true,
   onToggle,
   isRTL = false,
 }: SidebarProps) {
   const t = useTranslations("sidebar");
   const pathname = usePathname();
-  const { hasPermission } = usePermissions();
   const isArabic = pathname.startsWith("/ar");
   const [pendingHref, setPendingHref] = useState<string | null>(null);
 
   const [expandedItems, setExpandedItems] = useState<string[]>([]);
-
-  const visibleMenuItems = useMemo(
-    () =>
-      menuItems
-        .map((item) => {
-          if (item.key !== "settings" || !item.children) {
-            return item;
-          }
-
-          const permissionByChild: Record<string, PermissionKey> = {
-            "settings-overview": "settings.overview.view",
-            "settings-branding": "settings.branding.view",
-            "settings-users": "settings.users.view",
-            "settings-roles": "settings.roles.view",
-            "settings-policies": "settings.policies.view",
-            "settings-admissions-documents":
-              "settings.admissionsDocuments.view",
-            "settings-templates": "settings.templates.view",
-            "settings-integrations": "settings.integrations.view",
-            "settings-security": "settings.security.view",
-            "settings-backup": "settings.backup.view",
-          };
-
-          const nextChildren = item.children.filter((child) => {
-            const permission = permissionByChild[child.key];
-            return permission ? hasPermission(permission) : true;
-          });
-
-          return {
-            ...item,
-            children: nextChildren,
-          };
-        })
-        .filter((item) => !item.children || item.children.length > 0),
-    [hasPermission],
-  );
+  const visibleMenuItems = menuItems;
 
   // Clear pending state when pathname changes (navigation complete)
   useEffect(() => {
@@ -150,7 +119,7 @@ export default function Sidebar({
     );
   };
 
-  const isItemActive = (item: (typeof menuItems)[0]) => {
+  const isItemActive = (item: NavigationItem) => {
     const itemHref = isArabic ? item.href_ar : item.href_en;
     if (pathname === itemHref) return true;
 
@@ -270,7 +239,7 @@ export default function Sidebar({
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-xs text-gray-400 font-medium">
-                  {t("school")}
+                  {scopeLabel ?? t("school")}
                 </p>
                 <p className="text-sm font-bold text-gray-900 truncate">
                   {schoolName}

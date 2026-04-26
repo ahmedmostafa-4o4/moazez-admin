@@ -1,8 +1,10 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Sidebar from "./Sidebar";
 import TopNav from "./TopNav";
 import { useTranslations, useLocale } from "next-intl";
+import { schoolBottomItems, schoolMenuItems } from "@/config/navigation";
+import { usePermissions, type PermissionKey } from "@/hooks/usePermissions";
 
 interface LayoutWrapperProps {
   children: React.ReactNode;
@@ -13,9 +15,46 @@ export default function SideBarTopNav({ children }: LayoutWrapperProps) {
   const [isClient, setIsClient] = useState(false);
   const t = useTranslations();
   const locale = useLocale();
+  const { hasPermission } = usePermissions();
 
   // Detect if current locale is RTL
   const isRTL = locale === "ar";
+
+  const visibleSchoolMenuItems = useMemo(
+    () =>
+      schoolMenuItems
+        .map((item) => {
+          if (item.key !== "settings" || !item.children) {
+            return item;
+          }
+
+          const permissionByChild: Record<string, PermissionKey> = {
+            "settings-overview": "settings.overview.view",
+            "settings-branding": "settings.branding.view",
+            "settings-users": "settings.users.view",
+            "settings-roles": "settings.roles.view",
+            "settings-policies": "settings.policies.view",
+            "settings-admissions-documents":
+              "settings.admissionsDocuments.view",
+            "settings-templates": "settings.templates.view",
+            "settings-integrations": "settings.integrations.view",
+            "settings-security": "settings.security.view",
+            "settings-backup": "settings.backup.view",
+          };
+
+          const nextChildren = item.children.filter((child) => {
+            const permission = permissionByChild[child.key];
+            return permission ? hasPermission(permission) : true;
+          });
+
+          return {
+            ...item,
+            children: nextChildren,
+          };
+        })
+        .filter((item) => !item.children || item.children.length > 0),
+    [hasPermission],
+  );
 
   // Set initial sidebar state based on screen size
   useEffect(() => {
@@ -44,6 +83,8 @@ export default function SideBarTopNav({ children }: LayoutWrapperProps) {
       <div className="min-h-screen bg-gray-50">
         <Sidebar
           onSelect={() => {}}
+          menuItems={visibleSchoolMenuItems}
+          bottomItems={schoolBottomItems}
           schoolName={t("school_name")}
           isOpen={false}
           onToggle={() => {}}
@@ -71,6 +112,8 @@ export default function SideBarTopNav({ children }: LayoutWrapperProps) {
     <div className="min-h-screen bg-gray-50">
       <Sidebar
         onSelect={() => {}}
+        menuItems={visibleSchoolMenuItems}
+        bottomItems={schoolBottomItems}
         schoolName={t("school_name")}
         isOpen={isSidebarOpen}
         onToggle={() => setIsSidebarOpen(!isSidebarOpen)}
