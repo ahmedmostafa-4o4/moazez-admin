@@ -3,6 +3,7 @@
 import { Bell, Menu, Search, X } from "lucide-react";
 import { LanguageSwitcher } from "@/components/ui/language-switcher";
 import { useTranslations } from "next-intl";
+import ScopeSwitcher from "@/components/layout/ScopeSwitcher";
 
 interface PlatformTopNavProps {
   isSidebarOpen: boolean;
@@ -33,12 +34,7 @@ export default function PlatformTopNav({
           </button>
 
           <div className="min-w-0 flex-1">
-            <p className="text-xs font-semibold uppercase tracking-wide text-primary">
-              {t("role")}
-            </p>
-            <h1 className="truncate text-lg font-bold text-gray-900 lg:text-2xl">
-              {t("title")}
-            </h1>
+            <ScopeSwitcher />
           </div>
 
           <div className="hidden flex-1 justify-center lg:flex">
@@ -52,7 +48,7 @@ export default function PlatformTopNav({
             </div>
           </div>
 
-          <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+          <div className="flex shrink-0 items-center gap-1 sm:gap-3">
             <button
               className="relative flex h-11 w-11 items-center justify-center rounded-lg border-2 border-neutral-200 transition-colors hover:bg-gray-100 sm:h-[50px] sm:w-[50px]"
               aria-label={t("notifications")}

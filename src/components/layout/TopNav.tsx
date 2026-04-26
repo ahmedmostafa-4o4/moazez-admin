@@ -4,6 +4,7 @@ import { Search, Bell, Menu, X } from "lucide-react";
 import Image from "next/image";
 import { LanguageSwitcher } from "@/components/ui/language-switcher";
 import { useTranslations } from "next-intl";
+import ScopeSwitcher from "./ScopeSwitcher";
 
 interface TopNavProps {
   userName?: string;
@@ -77,7 +78,9 @@ export default function TopNav({
           </div>
 
           {/* Right Actions */}
-          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+          <div className="flex items-center gap-1 sm:gap-3 shrink-0">
+            <ScopeSwitcher />
+
             {/* Notification Bell */}
             <button
               onClick={onNotificationClick}

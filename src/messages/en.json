@@ -7012,6 +7012,35 @@
   "platform": {
     "scopeName": "Moazzez Platform",
     "scopeLabel": "Platform Scope",
+    "scopeSwitcher": {
+      "currentScope": "Current Scope",
+      "platformScope": "Platform Scope",
+      "schoolScope": "School Scope",
+      "platformDashboard": "Platform Dashboard",
+      "platformDashboardDescription": "Global super admin scope",
+      "selectSchool": "Select School",
+      "searchSchoolPlaceholder": "Search schools...",
+      "openSchoolDashboard": "Open School Dashboard",
+      "selectedSchool": "Selected School",
+      "noSchoolsFound": "No schools found",
+      "status": {
+        "active": "Active",
+        "onboarding": "Onboarding",
+        "suspended": "Suspended"
+      },
+      "health": {
+        "good": "Good",
+        "watch": "Watch",
+        "setup": "Setup",
+        "critical": "Critical"
+      },
+      "plan": {
+        "enterprise": "Enterprise",
+        "growth": "Growth",
+        "core": "Core"
+      },
+      "students": "{count} students"
+    },
     "topNav": {
       "title": "Platform Administration",
       "role": "Super Admin",

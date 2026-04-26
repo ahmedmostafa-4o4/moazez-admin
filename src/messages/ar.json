@@ -6979,6 +6979,35 @@
   "platform": {
     "scopeName": "منصة معزز",
     "scopeLabel": "نطاق المنصة",
+    "scopeSwitcher": {
+      "currentScope": "النطاق الحالي",
+      "platformScope": "نطاق المنصة",
+      "schoolScope": "نطاق المدرسة",
+      "platformDashboard": "لوحة تحكم المنصة",
+      "platformDashboardDescription": "نطاق السوبر أدمن لكل المدارس",
+      "selectSchool": "اختر المدرسة",
+      "searchSchoolPlaceholder": "ابحث عن مدرسة...",
+      "openSchoolDashboard": "فتح لوحة المدرسة",
+      "selectedSchool": "المدرسة المختارة",
+      "noSchoolsFound": "لا توجد مدارس",
+      "status": {
+        "active": "نشطة",
+        "onboarding": "قيد التهيئة",
+        "suspended": "معلقة"
+      },
+      "health": {
+        "good": "جيدة",
+        "watch": "تحتاج متابعة",
+        "setup": "إعداد",
+        "critical": "حرجة"
+      },
+      "plan": {
+        "enterprise": "مؤسسية",
+        "growth": "النمو",
+        "core": "أساسية"
+      },
+      "students": "{count} طالب"
+    },
     "topNav": {
       "title": "إدارة المنصة",
       "role": "مدير المنصة",

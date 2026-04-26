@@ -118,8 +118,8 @@ export default function PlatformDashboardPage() {
             icon={kpi.icon}
             iconColor={kpi.iconColor}
             iconBgColor={kpi.iconBgColor}
-            chartData={kpi.chartData}
             chartColor={kpi.chartColor}
+            showChart={false}
           />
         ))}
       </div>
