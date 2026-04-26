@@ -2,6 +2,7 @@
 
 import { Bell, Menu, Search, X } from "lucide-react";
 import { LanguageSwitcher } from "@/components/ui/language-switcher";
+import { useTranslations } from "next-intl";
 
 interface PlatformTopNavProps {
   isSidebarOpen: boolean;
@@ -12,6 +13,8 @@ export default function PlatformTopNav({
   isSidebarOpen,
   onMenuToggle,
 }: PlatformTopNavProps) {
+  const t = useTranslations("platform.topNav");
+
   return (
     <header className="sticky top-0 z-30 border-b border-gray-200 bg-white">
       <div className="px-4 py-3 sm:px-6 sm:py-4">
@@ -20,7 +23,7 @@ export default function PlatformTopNav({
             onClick={onMenuToggle}
             className="shrink-0 rounded-lg p-2 transition-colors hover:bg-gray-100 lg:hidden"
             type="button"
-            aria-label="Toggle platform navigation"
+            aria-label={t("toggleNavigation")}
           >
             {isSidebarOpen ? (
               <X className="h-6 w-6 text-gray-700" />
@@ -31,10 +34,10 @@ export default function PlatformTopNav({
 
           <div className="min-w-0 flex-1">
             <p className="text-xs font-semibold uppercase tracking-wide text-primary">
-              Super Admin
+              {t("role")}
             </p>
             <h1 className="truncate text-lg font-bold text-gray-900 lg:text-2xl">
-              Platform Administration
+              {t("title")}
             </h1>
           </div>
 
@@ -42,7 +45,7 @@ export default function PlatformTopNav({
             <div className="relative w-full max-w-2xl">
               <input
                 type="text"
-                placeholder="Search schools, users, apps"
+                placeholder={t("searchPlaceholder")}
                 className="w-full rounded-lg border border-gray-300 bg-gray-50 py-3.5 pe-10 ps-4 text-sm text-gray-700 transition-all placeholder:text-gray-400 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary-600"
               />
               <Search className="absolute end-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
@@ -52,7 +55,7 @@ export default function PlatformTopNav({
           <div className="flex shrink-0 items-center gap-2 sm:gap-3">
             <button
               className="relative flex h-11 w-11 items-center justify-center rounded-lg border-2 border-neutral-200 transition-colors hover:bg-gray-100 sm:h-[50px] sm:w-[50px]"
-              aria-label="Platform notifications"
+              aria-label={t("notifications")}
               type="button"
             >
               <Bell className="h-5 w-5 text-gray-600" />
@@ -65,7 +68,7 @@ export default function PlatformTopNav({
               <p className="text-sm font-semibold text-gray-900">
                 Ahmed Mostafa
               </p>
-              <p className="text-xs text-gray-500">Super Admin</p>
+              <p className="text-xs text-gray-500">{t("role")}</p>
             </div>
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-600 text-sm font-semibold text-white">
               AM
@@ -77,7 +80,7 @@ export default function PlatformTopNav({
           <div className="relative w-full">
             <input
               type="text"
-              placeholder="Search schools, users, apps"
+              placeholder={t("searchPlaceholder")}
               className="w-full rounded-lg border border-gray-200 bg-gray-50 py-2.5 pe-10 ps-4 text-sm text-gray-700 transition-all placeholder:text-gray-400 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary"
             />
             <Search className="absolute end-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />

@@ -6976,6 +6976,85 @@
       "saturday": "السبت"
     }
   },
+  "platform": {
+    "scopeName": "منصة معزز",
+    "scopeLabel": "نطاق المنصة",
+    "topNav": {
+      "title": "إدارة المنصة",
+      "role": "مدير المنصة",
+      "searchPlaceholder": "ابحث في المدارس والمستخدمين والتطبيقات",
+      "toggleNavigation": "تبديل تنقل المنصة",
+      "notifications": "إشعارات المنصة"
+    },
+    "dashboard": {
+      "title": "نظرة عامة على المنصة",
+      "subtitle": "مؤشرات تجريبية لنطاق مدير المنصة.",
+      "kpis": {
+        "totalSchools": {
+          "title": "إجمالي المدارس",
+          "subtitle": "عبر جميع المناطق النشطة"
+        },
+        "activeStudents": {
+          "title": "الطلاب النشطون",
+          "subtitle": "مسجلون حاليًا"
+        },
+        "averageAttendance": {
+          "title": "متوسط الحضور",
+          "subtitle": "على مستوى المنصة هذا الأسبوع"
+        },
+        "openAdmissions": {
+          "title": "طلبات القبول المفتوحة",
+          "subtitle": "طلبات قيد المعالجة"
+        },
+        "apiErrorsToday": {
+          "title": "أخطاء API اليوم",
+          "subtitle": "إشارة تشغيلية تجريبية"
+        },
+        "dataQualityIssues": {
+          "title": "مشكلات جودة البيانات",
+          "subtitle": "سجلات تحتاج إلى مراجعة"
+        }
+      }
+    },
+    "schools": {
+      "title": "دليل المدارس",
+      "subtitle": "سجلات مدارس ثابتة لتأسيس إدارة المنصة.",
+      "columns": {
+        "schoolName": "اسم المدرسة",
+        "status": "الحالة",
+        "plan": "الخطة",
+        "students": "الطلاب",
+        "users": "المستخدمون",
+        "modules": "الوحدات",
+        "health": "الصحة",
+        "lastActivity": "آخر نشاط",
+        "actions": "الإجراءات"
+      },
+      "status": {
+        "active": "نشطة",
+        "onboarding": "قيد التهيئة"
+      },
+      "plans": {
+        "enterprise": "مؤسسية",
+        "growth": "النمو",
+        "core": "أساسية"
+      },
+      "health": {
+        "good": "جيدة",
+        "watch": "تحتاج متابعة",
+        "setup": "إعداد"
+      },
+      "lastActivity": {
+        "12m": "منذ 12 دقيقة",
+        "1h": "منذ ساعة",
+        "yesterday": "أمس",
+        "2d": "منذ يومين"
+      },
+      "actions": {
+        "openSchoolDashboard": "فتح لوحة المدرسة"
+      }
+    }
+  },
   "nationalities": {
     "saudi_arabian": "سعودي",
     "emirati": "إماراتي",

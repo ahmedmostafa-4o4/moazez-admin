@@ -7009,6 +7009,85 @@
       "saturday": "Saturday"
     }
   },
+  "platform": {
+    "scopeName": "Moazzez Platform",
+    "scopeLabel": "Platform Scope",
+    "topNav": {
+      "title": "Platform Administration",
+      "role": "Super Admin",
+      "searchPlaceholder": "Search schools, users, apps",
+      "toggleNavigation": "Toggle platform navigation",
+      "notifications": "Platform notifications"
+    },
+    "dashboard": {
+      "title": "Dashboard Overview",
+      "subtitle": "Mock platform metrics for the Super Admin foundation.",
+      "kpis": {
+        "totalSchools": {
+          "title": "Total Schools",
+          "subtitle": "Across all active regions"
+        },
+        "activeStudents": {
+          "title": "Active Students",
+          "subtitle": "Currently enrolled"
+        },
+        "averageAttendance": {
+          "title": "Average Attendance",
+          "subtitle": "Platform-wide this week"
+        },
+        "openAdmissions": {
+          "title": "Open Admissions",
+          "subtitle": "Applications in progress"
+        },
+        "apiErrorsToday": {
+          "title": "API Errors Today",
+          "subtitle": "Mock operational signal"
+        },
+        "dataQualityIssues": {
+          "title": "Data Quality Issues",
+          "subtitle": "Records requiring review"
+        }
+      }
+    },
+    "schools": {
+      "title": "Schools Directory",
+      "subtitle": "Static school records for the platform admin foundation.",
+      "columns": {
+        "schoolName": "School Name",
+        "status": "Status",
+        "plan": "Plan",
+        "students": "Students",
+        "users": "Users",
+        "modules": "Modules",
+        "health": "Health",
+        "lastActivity": "Last Activity",
+        "actions": "Actions"
+      },
+      "status": {
+        "active": "Active",
+        "onboarding": "Onboarding"
+      },
+      "plans": {
+        "enterprise": "Enterprise",
+        "growth": "Growth",
+        "core": "Core"
+      },
+      "health": {
+        "good": "Good",
+        "watch": "Watch",
+        "setup": "Setup"
+      },
+      "lastActivity": {
+        "12m": "12 minutes ago",
+        "1h": "1 hour ago",
+        "yesterday": "Yesterday",
+        "2d": "2 days ago"
+      },
+      "actions": {
+        "openSchoolDashboard": "Open School Dashboard"
+      }
+    }
+  },
   "nationalities": {
     "saudi_arabian": "Saudi Arabian",
     "emirati": "Emirati",
