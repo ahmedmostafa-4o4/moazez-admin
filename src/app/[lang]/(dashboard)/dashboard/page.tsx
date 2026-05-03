@@ -1,9 +1,5 @@
-import SchoolDashboard from "@/features/dashboard/pages/SchoolDashboard";
+import PlatformDashboardContent from "@/features/platform/pages/PlatformDashboardPage";
 
-export default function DashboardPage() {
-  return (
-      <main >
-        <SchoolDashboard />
-      </main>
-  );
+export default function PlatformDashboardPage() {
+  return <PlatformDashboardContent />;
 }

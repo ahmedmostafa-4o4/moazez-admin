@@ -14,6 +14,12 @@ import {
   validateLoginValues,
 } from "../utils/authValidation";
 import { useRouter } from "next/navigation";
+import {
+  findMockAuthSession,
+  recordSchoolLogin,
+  setMockAuthSession,
+} from "@/features/platform/data/platformSchoolStore";
+import { setStoredSelectedSchoolId } from "@/lib/scope/selected-school";
 
 const INITIAL_VALUES: LoginFormValues = {
   email: "",
@@ -30,11 +36,10 @@ async function mockSubmitLogin(values: LoginFormValues) {
     setTimeout(resolve, 1200);
   });
 
-  const normalizedEmail = values.email.trim().toLowerCase();
-  const password = values.password.trim();
+  const session = findMockAuthSession(values.email, values.password);
 
-  if (normalizedEmail === "admin@school.edu" && password === "Admin123!") {
-    return;
+  if (session) {
+    return session;
   }
 
   throw new Error("mock-auth-failed");
@@ -50,7 +55,7 @@ export function LoginForm({ currentYear }: LoginFormProps) {
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitSuccess, setSubmitSuccess] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const route = useRouter().push;
+  const router = useRouter();
   const validationMessages: ValidationMessages = {
     emailRequired: t("errors.emailRequired"),
     emailInvalid: t("errors.emailInvalid"),
@@ -110,8 +115,17 @@ export function LoginForm({ currentYear }: LoginFormProps) {
     setIsSubmitting(true);
 
     try {
-      await mockSubmitLogin(values);
-      route("/");
+      const session = await mockSubmitLogin(values);
+      setMockAuthSession(session);
+
+      if (session.type === "school") {
+        setStoredSelectedSchoolId(session.schoolId);
+        recordSchoolLogin(session.schoolId);
+        router.push(`/${locale}/dashboard?schoolId=${session.schoolId}`);
+      } else {
+        router.push(`/${locale}/dashboard`);
+      }
+
       setSubmitSuccess(t("demoSuccess"));
     } catch {
       setSubmitError(t("submitError"));

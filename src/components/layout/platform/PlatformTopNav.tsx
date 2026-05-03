@@ -48,7 +48,7 @@ export default function PlatformTopNav({
             </div>
           </div>
 
-          <div className="flex shrink-0 items-center gap-1 sm:gap-3">
+          <div className="flex items-center gap-1 sm:gap-3 justify-end flex-1 ">
             <button
               className="relative flex h-11 w-11 items-center justify-center rounded-lg border-2 border-neutral-200 transition-colors hover:bg-gray-100 sm:h-[50px] sm:w-[50px]"
               aria-label={t("notifications")}
@@ -58,7 +58,9 @@ export default function PlatformTopNav({
               <span className="absolute end-1.5 top-1.5 h-2 w-2 rounded-full bg-red-500" />
             </button>
 
-            <LanguageSwitcher />
+            <div className="hidden lg:block">
+              <LanguageSwitcher />
+            </div>
 
             <div className="hidden text-end md:block">
               <p className="text-sm font-semibold text-gray-900">
@@ -72,12 +74,12 @@ export default function PlatformTopNav({
           </div>
         </div>
 
-        <div className="mt-3 lg:hidden">
+        <div className="mt-3 lg:hidden ">
           <div className="relative w-full">
             <input
               type="text"
               placeholder={t("searchPlaceholder")}
-              className="w-full rounded-lg border border-gray-200 bg-gray-50 py-2.5 pe-10 ps-4 text-sm text-gray-700 transition-all placeholder:text-gray-400 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary"
+              className= "w-full rounded-lg border border-gray-200 bg-gray-50 py-2.5 pe-10 ps-4 text-sm text-gray-700 transition-all placeholder:text-gray-400 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary"
             />
             <Search className="absolute end-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
           </div>

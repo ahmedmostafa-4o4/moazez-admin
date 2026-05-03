@@ -8,7 +8,7 @@ import Providers from "../providers";
 export const metadata = {
   title: "Moazzez | معزز",
   description: "School Management System",
- 
+
   themeColor: "#ffffff",
   manifest: "/manifest.json",
 };

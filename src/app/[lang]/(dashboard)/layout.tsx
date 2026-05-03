@@ -1,10 +1,10 @@
-import SideBarTopNav from "@/components/layout/SideBarTopNav";
-import { UnsavedChangesProvider } from "@/providers/UnsavedChangesProvider";
+import { PlatformLayout } from "@/components/layout/platform";
 import { NavigationGuardProvider } from "@/providers/NavigationGuardProvider";
 import { ProgressBarProvider } from "@/providers/ProgressBarProvider";
+import { UnsavedChangesProvider } from "@/providers/UnsavedChangesProvider";
 import { ToastProvider } from "@/components/ui/toast/Toast";
 
-export default function DashboardLayout({
+export default function PlatformRouteLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -14,7 +14,7 @@ export default function DashboardLayout({
       <UnsavedChangesProvider>
         <NavigationGuardProvider>
           <ProgressBarProvider>
-            <SideBarTopNav>{children}</SideBarTopNav>
+            <PlatformLayout>{children}</PlatformLayout>
           </ProgressBarProvider>
         </NavigationGuardProvider>
       </UnsavedChangesProvider>

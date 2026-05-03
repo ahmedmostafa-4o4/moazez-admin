@@ -6,6 +6,7 @@ import {
   mockPlatformSchools,
   type PlatformSchoolOption,
 } from "@/features/platform/data/mockSchools";
+import { usePlatformSchools } from "@/features/platform/data/platformSchoolStore";
 import {
   clearStoredSelectedSchoolId,
   getStoredSelectedSchoolId,
@@ -28,7 +29,7 @@ function getInitialSelectedSchoolId(urlSchoolId: string | null) {
 export function useSelectedSchool() {
   const searchParams = useSearchParams();
   const urlSchoolId = searchParams.get("schoolId");
-  const schools = mockPlatformSchools;
+  const { schools } = usePlatformSchools();
   const [selectedSchoolId, setSelectedSchoolIdState] = useState(() =>
     getInitialSelectedSchoolId(urlSchoolId),
   );

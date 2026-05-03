@@ -12,6 +12,7 @@ import Image from "next/image";
 import GuardedLink from "@/components/navigation/GuardedLink";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
+import { LanguageSwitcher } from "@/components/ui/language-switcher";
 import type { CSSProperties } from "react";
 import type { NavigationItem } from "@/config/navigation";
 
@@ -232,7 +233,7 @@ export default function Sidebar({
 
         {/* School Selector (fixed top) */}
         {isOpen && (
-          <div className="mb-6 shrink-0 p-2">
+          <div className=" shrink-0 p-2">
             <div className="flex items-center gap-3 p-3 border border-gray-200 rounded-xl bg-white">
               <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center shrink-0">
                 <Building2 className="w-5 h-5 text-white" />
@@ -248,7 +249,10 @@ export default function Sidebar({
             </div>
           </div>
         )}
-
+ {/* Language Switcher for Mobile */}
+          <div className="px-3 py-2 mt-2 lg:hidden">
+             <LanguageSwitcher />
+          </div>
         {/* âœ… Scrollable Menu Only */}
         <div className="flex-1 overflow-y-auto overflow-x-hidden min-h-0 sidebar-scroll">
           <nav className="space-y-1 pb-4">
@@ -610,6 +614,8 @@ export default function Sidebar({
               </GuardedLink>
             );
           })}
+          
+         
         </div>
       </aside>
     </>
