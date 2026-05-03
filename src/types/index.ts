@@ -6,26 +6,10 @@ export * from "@/features/admissions/types/admissions";
 
 // Students Module (with renamed exports to avoid conflicts)
 export type {
-  StudentStatus,
-  RiskFlag,
-  TimelineEventType,
   Student,
-  StudentContact,
-  StudentMock,
-  StudentGuardian,
-  StudentGuardianLink,
-  StudentGuardianMock,
-  StudentGuardianLinkMock,
-  StudentDocument,
-  StudentDocumentMock,
-  StudentMedicalProfile,
-  StudentMedicalProfileMock,
-  StudentTimelineEvent,
-  StudentTimelineEventMock,
 } from "@/features/students-guardians/students/types";
 
 // Re-export DocumentStatus from students with alias to avoid conflict
-export type { DocumentStatus as StudentDocumentStatus } from "@/features/students-guardians/students/types/enums";
 
 // Notifications Module
 export * from "./notifications";

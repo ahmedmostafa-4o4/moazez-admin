@@ -4,12 +4,6 @@
  * from the persisted settings session and role model.
  */
 
-import { useEffect, useMemo, useState } from "react";
-import {
-  SETTINGS_SESSION_EVENT,
-  getCurrentSettingsPermissions,
-  getCurrentSettingsSessionUser,
-} from "@/features/settings/services/settingsService";
 
 export type PermissionKey =
   | "attendance.rollcall.submit"
@@ -57,48 +51,5 @@ const alwaysGrantedNedaaPermissions: PermissionKey[] = [
 ];
 
 export function usePermissions() {
-  const [sessionUser, setSessionUser] = useState(() =>
-    getCurrentSettingsSessionUser(),
-  );
-  const [resolvedSettingsPermissions, setResolvedSettingsPermissions] =
-    useState<PermissionKey[]>(() => getCurrentSettingsPermissions() as PermissionKey[]);
-
-  useEffect(() => {
-    const sync = () => {
-      setSessionUser(getCurrentSettingsSessionUser());
-      setResolvedSettingsPermissions(
-        getCurrentSettingsPermissions() as PermissionKey[],
-      );
-    };
-
-    window.addEventListener(SETTINGS_SESSION_EVENT, sync);
-    return () => {
-      window.removeEventListener(SETTINGS_SESSION_EVENT, sync);
-    };
-  }, []);
-
-  const grantedPermissions = useMemo(
-    () =>
-      new Set<PermissionKey>([
-        ...legacyAdminPermissions,
-        ...alwaysGrantedNedaaPermissions,
-        ...resolvedSettingsPermissions,
-      ]),
-    [resolvedSettingsPermissions],
-  );
-
-  const hasPermission = (key: PermissionKey): boolean => grantedPermissions.has(key);
-  const hasAnyPermission = (keys: PermissionKey[]): boolean =>
-    keys.some((key) => grantedPermissions.has(key));
-  const hasAllPermissions = (keys: PermissionKey[]): boolean =>
-    keys.every((key) => grantedPermissions.has(key));
-
-  return {
-    role: sessionUser.roleId,
-    currentUser: sessionUser,
-    grantedPermissions: Array.from(grantedPermissions),
-    hasPermission,
-    hasAnyPermission,
-    hasAllPermissions,
-  };
+ 
 }

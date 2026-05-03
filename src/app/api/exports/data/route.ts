@@ -2,7 +2,6 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { getLeads } from "@/api/mockLeadsApi";
-import { mockApplications } from "@/data/mockAdmissions";
 import {
   convertToCSV,
   formatLeadsForExport,
@@ -58,31 +57,6 @@ export async function POST(request: NextRequest) {
       const allLeads = getLeads();
       const filteredLeads = filterByDate(allLeads, "createdAt");
       exportData.leads = formatLeadsForExport(filteredLeads, exportLocale);
-    }
-
-    if (datasets.includes("applications")) {
-      const filteredApps = filterByDate(mockApplications, "submittedDate");
-      exportData.applications = formatApplicationsForExport(
-        filteredApps,
-        exportLocale,
-      );
-    }
-
-    if (datasets.includes("decisions")) {
-      const filteredApps = filterByDate(mockApplications, "submittedDate");
-      exportData.decisions = formatDecisionsForExport(
-        filteredApps,
-        undefined,
-        exportLocale,
-      );
-    }
-
-    if (datasets.includes("enrollments")) {
-      const filteredApps = filterByDate(mockApplications, "submittedDate");
-      exportData.enrollments = formatEnrollmentsForExport(
-        filteredApps,
-        exportLocale,
-      );
     }
 
     // Generate export based on format
